@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './App.css'
+import Movies from './components/movies'
+import CreateMovie from './components/movies/createMovie'
 
 export default function App() {
   const [movies, setMovies] = useState(()=> {
@@ -60,43 +62,17 @@ export default function App() {
 
   return (
     <div  id="app">
-      <form onSubmit={handdleAddMovie} >
-        <div className="fields">
-          <label htmlFor="title">Título da produção:</label>
-          <input type="text" id="title" value={title}
-            onChange={ev=> setTitle(ev.target.value)}  
-          />
-        </div>
-
-        <div className="fields">
-          <label htmlFor="synopsis">Sinopse:</label>
-          <textarea id="synopsis" rows={5} cols={50} value={synopsis}
-            onChange={ev=> setSynopsis(ev.target.value)}
-          ></textarea>
-        </div>
-
-        <div className="fields">
-          <label htmlFor="trailler">Link do Trailler:</label>
-          <input type="text" id="trailler" value={trailler}
-            onChange={ev=> setTrailler(ev.target.value)}
-          />
-        </div>
-
-        <button type='submit'>Adicionar</button>
-        
-      </form>
+      
+      <CreateMovie 
+        handdleAddMovie={handdleAddMovie} 
+        title={title} setTitle={setTitle}
+        synopsis={synopsis} setSynopsis={setSynopsis}
+        trailler={trailler} setTrailler={setTrailler}
+      />
 
       <div className="content">                      
         {movies.map(movie=>(
-          <div key={movie.id}>
-              <h3>{movie.title}</h3>
-              <h1>{movie.id}</h1>
-              <div>
-                <p>{movie.synopsis}</p>
-                <button onClick={()=> handdleRemoveMovie(movie.id)}>Remover</button>
-              </div>
-              <iframe width="560" height="315" src={movie.trailler} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-          </div>
+          <Movies key={movie.id} movie={movie} handdleRemoveMovie={handdleRemoveMovie} />
         ))}
       </div>
       
