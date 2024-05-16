@@ -1,0 +1,11 @@
+:root{
+    --cor-primaria: #121a24;
+    --cor-secundaria: #22566b;
+    --cor-terciaria: #3278a3;
+    --cor-quaternaria: #4ba1a0;
+    --cinza: #b0ae9f;
+}
+
+body {
+    /* background-image: linear-gradient(to bottom right, var(--cor-primaria), var(--cor-secundaria), var(--cor-primaria)); */
+}
