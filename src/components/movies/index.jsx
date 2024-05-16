@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-
+import './style-movies.css'
 
 
 export default function Movies({movie, handdleRemoveMovie, handdleEditMovie}){
@@ -8,7 +8,7 @@ export default function Movies({movie, handdleRemoveMovie, handdleEditMovie}){
 
 
     return(
-        <div>
+        <div className='movies'>
               <h3>{movie.title}</h3>
               <div>
                 <p>{movie.synopsis}</p>

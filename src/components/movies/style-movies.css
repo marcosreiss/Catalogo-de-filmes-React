@@ -1,0 +1,88 @@
+:root{
+    --cor-primaria: #121a24;
+    --cor-secundaria: #22566b;
+    --cor-terciaria: #3278a3;
+    --cor-quaternaria: #4ba1a0;
+    --cor-cinco: #1f1f2d;
+    --cinza: #b0ae9f;
+
+}
+
+.movies{
+    height: 80%;
+    min-height: 700px;
+    width: 70%;
+    min-width: 80%;
+    background-color: var(--cor-primaria);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 4px 4px 6px 9px rgba(0, 0, 0, 0.58);
+}
+
+.form{
+    background-image: linear-gradient(to bottom right, var(--cor-primaria), var(--cor-secundaria), var(--cor-primaria));
+    width: 700px;
+    height: 500px;
+    padding: 19px 10px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 6px 9px rgba(0, 0, 0, 0.58);
+
+    position: absolute;
+    top: 180px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#close-form{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    background-color: #121a24;
+    padding: 12px 15px;
+    color: white;
+    font-size: 15px;
+    font-weight: bolder;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.fields{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 2px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.fields input, textarea{
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 350px;
+    background-color: var(--cor-quaternaria) ;
+    color: white;
+    font-size: 17px;
+    outline: none;
+}
+
+.fields input::placeholder, textarea::placeholder{
+    color: white;
+    opacity: .3;
+}
+
+.form button{
+    border: none;
+    padding: 10px 20px;
+    background-color: #4ba1a0;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}

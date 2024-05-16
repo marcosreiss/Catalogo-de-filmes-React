@@ -19,6 +19,8 @@ export default function App() {
   const [synopsis, setSynopsis] = useState('')
   const [trailler, setTrailler] = useState('') //link do trailler
 
+  const [showCreateMovie, setShowCreateMovie] = useState(false);
+
 
   const handdleAddMovie = function(event){
     event.preventDefault();
@@ -48,6 +50,7 @@ export default function App() {
       localStorage.setItem('id-controll', newId)
       return newId
     })
+    setShowCreateMovie(state=> !state)
   }
 
   const handdleRemoveMovie = function(id){
@@ -68,15 +71,26 @@ export default function App() {
 
   return (
     <div  id="app">
-      
-      <CreateMovie 
-        handdleAddMovie={handdleAddMovie} 
-        title={title} setTitle={setTitle}
-        synopsis={synopsis} setSynopsis={setSynopsis}
-        trailler={trailler} setTrailler={setTrailler}
-      />
 
-      <div className="content">                      
+      <button className='button' onClick={()=> setShowCreateMovie(state=> !state)} >
+        Novo Filme
+      </button>
+
+      {showCreateMovie && (
+        <>
+          <div className="overlay"></div>
+          <CreateMovie 
+            title={title} setTitle={setTitle}
+            synopsis={synopsis} setSynopsis={setSynopsis}
+            trailler={trailler} setTrailler={setTrailler}
+            handdleAddMovie={handdleAddMovie} 
+            setShowCreateMovie={setShowCreateMovie}
+          />
+        </>
+      )}
+      
+
+                            
         {movies.map(movie=>(
           <Movies key={movie.id} 
               movie={movie} 
@@ -84,7 +98,6 @@ export default function App() {
               handdleEditMovie={handdleEditMovie}
           />
         ))}
-      </div>
       
     </div>
   )
