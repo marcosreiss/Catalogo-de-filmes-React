@@ -12,20 +12,16 @@ export default function App() {
   const handdleAddMovie = function(event){
     event.preventDefault();
 
-    console.log(trailler);
     const linkBase = 'https://www.youtube.com/embed/';
     const array = trailler.split('/')
     const link = linkBase + array[array.length - 1]
-    console.log(link);
-    setTrailler(()=> (link))
 
-    console.log(trailler);
 
     const newMovie = {
       id: id,
       title: title,
       synopsis: synopsis,
-      trailler: trailler
+      trailler: link
     }
     setMovies( state=> [...state, newMovie])
 
