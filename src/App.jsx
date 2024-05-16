@@ -2,8 +2,17 @@ import { useState } from 'react'
 import './App.css'
 
 export default function App() {
-  const [movies, setMovies] = useState([])
-  const [id, setId] = useState(1)
+  const [movies, setMovies] = useState(()=> {
+    const storedMovies = localStorage.getItem('movies-data')
+    if(!storedMovies) return []
+    return JSON.parse(storedMovies)
+  })
+
+  const [id, setId] = useState(()=>{
+    const storedId = localStorage.getItem('id-controll')
+    if(!storedId) return 1
+    return parseInt(storedId)
+  })
   const [title, setTitle] = useState('')
   const [synopsis, setSynopsis] = useState('')
   const [trailler, setTrailler] = useState('') //link do trailler
@@ -23,12 +32,28 @@ export default function App() {
       synopsis: synopsis,
       trailler: link
     }
-    setMovies( state=> [...state, newMovie])
+    setMovies( state=> {
+      const newState =[...state, newMovie]
+      localStorage.setItem("movies-data", JSON.stringify(newState));
+      return newState
+    })
 
     setTitle("")
     setSynopsis("")
     setTrailler("") 
-    setId(state=> state+1)
+    setId(state=> {
+      const newId = state+1
+      localStorage.setItem('id-controll', newId)
+      return newId
+    })
+  }
+
+  const handdleRemoveMovie = function(id){
+    setMovies(state=> {
+      const newState = state.filter(game => game.id !== id)
+      localStorage.setItem('movies-data', JSON.stringify(newState))
+      return newState
+    })
   }
 
 
@@ -65,9 +90,12 @@ export default function App() {
         {movies.map(movie=>(
           <div key={movie.id}>
               <h3>{movie.title}</h3>
-              <p>{movie.synopsis}</p>
+              <h1>{movie.id}</h1>
+              <div>
+                <p>{movie.synopsis}</p>
+                <button onClick={()=> handdleRemoveMovie(movie.id)}>Remover</button>
+              </div>
               <iframe width="560" height="315" src={movie.trailler} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-              <p>{movie.trailler}</p>
           </div>
         ))}
       </div>
