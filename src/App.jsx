@@ -52,12 +52,18 @@ export default function App() {
 
   const handdleRemoveMovie = function(id){
     setMovies(state=> {
-      const newState = state.filter(game => game.id !== id)
+      const newState = state.filter(movie => movie.id !== id)
       localStorage.setItem('movies-data', JSON.stringify(newState))
       return newState
     })
   }
 
+  const handdleEditMovie = function(/*id*/){
+
+    // const movieToEdit = movies.filter(movie => movie.id === id )[0]
+    console.log(movies);
+
+  }
 
 
   return (
@@ -72,7 +78,11 @@ export default function App() {
 
       <div className="content">                      
         {movies.map(movie=>(
-          <Movies key={movie.id} movie={movie} handdleRemoveMovie={handdleRemoveMovie} />
+          <Movies key={movie.id} 
+              movie={movie} 
+              handdleRemoveMovie={handdleRemoveMovie}
+              handdleEditMovie={handdleEditMovie}
+          />
         ))}
       </div>
       

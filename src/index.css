@@ -7,5 +7,7 @@
 }
 
 body {
-    /* background-image: linear-gradient(to bottom right, var(--cor-primaria), var(--cor-secundaria), var(--cor-primaria)); */
+    
+    background-image: linear-gradient(to bottom right, var(--cor-primaria), var(--cor-secundaria), var(--cor-primaria));
+    color: white;
 }
