@@ -10,8 +10,11 @@ export default function CreateMovie({handdleAddMovie, title, setTitle, synopsis,
 
     return(
       <form className='form' onSubmit={handdleAddMovie} >
+        
         <h1>Adicionar Filme</h1>
+
         <button onClick={()=> setShowCreateMovie(state=> !state)} id='close-form'>X</button>
+
         <div className="fields">
           <label htmlFor="title">Título da produção:</label>
           <input type="text" id="title" value={title} 

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import Movies from './components/movies'
 import CreateMovie from './components/movies/createMovie'
+import Header from './components/header'
 
 export default function App() {
   const [movies, setMovies] = useState(()=> {
@@ -72,9 +73,7 @@ export default function App() {
   return (
     <div  id="app">
 
-      <button className='button' onClick={()=> setShowCreateMovie(state=> !state)} >
-        Novo Filme
-      </button>
+      <Header setShowCreateMovie={setShowCreateMovie} />
 
       {showCreateMovie && (
         <>
@@ -88,9 +87,8 @@ export default function App() {
           />
         </>
       )}
-      
-
                             
+      <div className="main">
         {movies.map(movie=>(
           <Movies key={movie.id} 
               movie={movie} 
@@ -98,6 +96,7 @@ export default function App() {
               handdleEditMovie={handdleEditMovie}
           />
         ))}
+      </div>
       
     </div>
   )

@@ -16,21 +16,15 @@
 }
 
 body {
-    min-width: 1200px;
-    max-width: 1900px;
+    min-height: 100vh;
 
-    min-height: 900px;
-    height: 100vh;
+    
+}
 
-    background-image: linear-gradient(to bottom right, var(--cor-primaria), var(--cor-secundaria), var(--cor-primaria));
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white;
-
+#root{
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
 }
-
 
