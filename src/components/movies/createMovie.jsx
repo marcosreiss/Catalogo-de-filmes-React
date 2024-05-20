@@ -17,7 +17,7 @@ export default function CreateMovie({handdleAddMovie, title, setTitle, synopsis,
 
         <div className="fields">
           <label htmlFor="title">Título da produção:</label>
-          <input type="text" id="title" value={title} 
+          <input required type="text" id="title" value={title} 
             placeholder='Homem Aranha de Volta ao Lar'
             onChange={ev=> setTitle(ev.target.value)}  
           />
@@ -25,7 +25,7 @@ export default function CreateMovie({handdleAddMovie, title, setTitle, synopsis,
 
         <div className="fields">
           <label htmlFor="synopsis">Sinopse:</label>
-          <textarea id="synopsis" rows={5} cols={50} value={synopsis}
+          <textarea required id="synopsis" rows={5} cols={50} value={synopsis}
             placeholder={synopsisExemple}
             onChange={ev=> setSynopsis(ev.target.value)}
           ></textarea>
@@ -33,7 +33,7 @@ export default function CreateMovie({handdleAddMovie, title, setTitle, synopsis,
 
         <div className="fields">
           <label htmlFor="trailler">Link do Trailler:</label>
-          <input type="text" id="trailler" value={trailler}
+          <input required type="text" id="trailler" value={trailler}
             onChange={ev=> setTrailler(ev.target.value)}
             placeholder='https://youtu.be/VfTl8e6hwws?si=pHOV2CWnAJ0fVc5d'
           />

@@ -27,8 +27,17 @@ export default function App() {
     event.preventDefault();
 
     const linkBase = 'https://www.youtube.com/embed/';
-    const array = trailler.split('/')
-    const link = linkBase + array[array.length - 1]
+    let array = trailler.split('/')
+    let link;
+    if(array[2] !== 'youtu.be'){
+      array = trailler.split('=')
+      if(array.length > 2) {
+        array.pop()
+        array[array.length - 1] = array[array.length - 1].slice(0, -3)
+      }
+      console.log(array)
+    }
+     link = linkBase + array[array.length - 1]
 
 
     const newMovie = {
@@ -38,7 +47,7 @@ export default function App() {
       trailler: link
     }
     setMovies( state=> {
-      const newState =[...state, newMovie]
+      const newState =[newMovie, ...state]
       localStorage.setItem("movies-data", JSON.stringify(newState));
       return newState
     })
