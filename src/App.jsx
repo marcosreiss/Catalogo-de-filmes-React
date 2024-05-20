@@ -97,7 +97,8 @@ export default function App() {
         </>
       )}
                             
-      <div className="main">
+      {movies.length > 0 ? (
+        <div className="main">
         {movies.map(movie=>(
           <Movies key={movie.id} 
               movie={movie} 
@@ -106,6 +107,7 @@ export default function App() {
           />
         ))}
       </div>
+      ) : <h1 style={{textAlign: 'center', width: '100%'}}>Comece a adicionar títulos ao seu catálogo pessoal</h1>}
       
     </div>
   )
